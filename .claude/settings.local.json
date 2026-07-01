@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(git --version)",
+      "Bash(npm install *)",
+      "Bash(node *)",
+      "Bash(npx tsc *)",
+      "Bash(perl -0pi -e 's/COLORS\\\\[i % COLORS\\\\.length\\\\]/DONUT_COLORS[i % DONUT_COLORS.length]/g' \"app/\\(dashboard\\)/expenses/expenses-donut.tsx\")",
+      "Bash(echo \"---exit $?---\")",
+      "Bash(grep -v '^$')",
+      "Bash(echo \"tsc exit=$?\")",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(pkill -f \"next-server\")",
+      "Bash([ -f \"$MEM\" ])",
+      "Bash(npm rebuild *)",
+      "Bash(pkill -f \"PayTrack.app\")"
+    ]
+  }
+}

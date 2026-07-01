@@ -1,0 +1,33 @@
+name: Build Windows installer
+
+# Builds the PayTrack Windows .exe on a Windows runner (the native SQLite module
+# must be compiled on Windows, so this can't be done reliably from macOS).
+#
+# Run it from the repo's "Actions" tab → "Build Windows installer" → "Run workflow".
+# When it finishes, download the "PayTrack-Windows" artifact — that's the installer.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Windows installer
+        run: npm run dist:win
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: PayTrack-Windows
+          path: dist-app/*.exe
+          if-no-files-found: error

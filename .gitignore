@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js
+/.next/
+/out/
+
+# desktop app build output
+/dist-app
+# NOTE: build/icon.png and build/icon.icns are committed on purpose — the
+# packaging step (and Windows CI) needs them. build/icon.svg is their source.
+
+# local database (SQLite)
+/data/*.db
+/data/*.db-shm
+/data/*.db-wal
+
+# env
+.env
+.env.local
+.env*.local
+
+# misc
+.DS_Store
+*.pem
+npm-debug.log*
+next-env.d.ts

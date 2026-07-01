@@ -1,0 +1,81 @@
+{
+  "name": "payroll-tracker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "PayTrack — simple local-first bookkeeping & payroll",
+  "author": "PayTrack",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "electron": "electron .",
+    "electron:dev": "concurrently -k -n next,electron \"next dev\" \"wait-on http://localhost:3000 && PAYTRACK_DEV_URL=http://localhost:3000 electron .\"",
+    "dist": "next build && electron-builder",
+    "dist:mac": "next build && electron-builder --mac",
+    "dist:win": "next build && electron-builder --win"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "better-sqlite3": "^11.3.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.436.0",
+    "next": "14.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.53.0",
+    "recharts": "^2.12.7",
+    "tailwind-merge": "^2.5.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.16.5",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^10.0.3",
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3",
+    "postcss": "^8.4.45",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "wait-on": "^9.0.10"
+  },
+  "build": {
+    "appId": "com.paytrack.desktop",
+    "productName": "PayTrack",
+    "asar": false,
+    "npmRebuild": true,
+    "directories": {
+      "output": "dist-app",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      ".next/**/*",
+      "next.config.mjs",
+      "package.json"
+    ],
+    "mac": {
+      "target": ["dmg"],
+      "category": "public.app-category.finance",
+      "icon": "build/icon.icns",
+      "identity": null
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "PayTrack"
+    }
+  }
+}
