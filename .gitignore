@@ -27,3 +27,4 @@
 *.pem
 npm-debug.log*
 next-env.d.ts
+.claude/settings.local.json

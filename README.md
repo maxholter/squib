@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-# squib
-Trying to create a simple and free payroll tracking software similar to what quickbooks use to offer at low cost.
-=======
 # PayTrack — Simple Bookkeeping & Payroll
 
-A lightweight web app for small businesses with a handful of 1099 contractors.
-It tracks **income**, **categorized expenses**, **payroll runs**, and **tax payments** —
-and estimates your **quarterly taxes** automatically. It's built to replace an
-expensive accounting subscription or a messy spreadsheet.
+A simple, free payroll and bookkeeping app — an alternative to what QuickBooks used to
+offer at low cost. It's a lightweight web app for small businesses with a handful of
+1099 contractors: it tracks **income**, **categorized expenses**, **payroll runs**, and
+**tax payments** — and estimates your **quarterly taxes** automatically. Built to replace
+an expensive accounting subscription or a messy spreadsheet.
 
 This build is **local-first**: it runs on your own machine with a built-in database,
 so there is **nothing to sign up for and no cloud setup**. When you're ready to put it
@@ -90,4 +87,3 @@ React Hook Form + Zod · Recharts · date‑fns · lucide‑react.
 
 Tax figures in this app are **estimates only** and are not tax advice. Consult a
 qualified tax professional for your actual liability.
->>>>>>> 33a98d6 (init commit)
