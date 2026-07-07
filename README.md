@@ -12,9 +12,25 @@ online for multiple users, see [UPGRADE_TO_SUPABASE.md](./UPGRADE_TO_SUPABASE.md
 
 ---
 
-## Run it (2 commands)
+## Easiest: download the desktop app (no command line)
 
-You need [Node.js 18+](https://nodejs.org) (LTS). Then, in this folder:
+If you just want to **use** PayTrack and don't want to touch a terminal, grab the
+prebuilt installer from the [**Releases page**](../../releases) — download the `.exe`
+(Windows), run it, and click **More info → Run anyway** if Windows warns about an
+unknown publisher. Nothing else to install. (Maintainers: see
+[building a release](#building-installers-for-other-people) below.)
+
+---
+
+## Run it from source (2 commands)
+
+You need **[Node.js 20 LTS](https://nodejs.org)** (Node 18–22 all work). ⚠️ Use a version
+labelled **"LTS"**, not "Current" — the newest Node (23+) fails to build the database
+module with a confusing Python/`node-gyp` error, so this project refuses to install on
+those with a clear message instead. If you use [`nvm`](https://github.com/nvm-sh/nvm),
+just run `nvm use` (an `.nvmrc` pins the right version).
+
+Then, in this folder:
 
 ```bash
 npm install
@@ -27,7 +43,7 @@ account. That's it — your data is saved to a local database file at `./data/pa
 To stop the app, press `Ctrl+C` in the terminal. To start it again later, just run
 `npm run dev` from this folder.
 
-### Prefer a real desktop app?
+### Building installers for other people
 
 You can package PayTrack as a **double-click desktop app** (its own window, no terminal,
 nothing for end users to install) for macOS and Windows:
@@ -37,8 +53,17 @@ npm run dist:mac    # → dist-app/PayTrack-<version>.dmg
 npm run dist:win    # → dist-app/PayTrack Setup <version>.exe   (build on Windows)
 ```
 
-See **[PACKAGING.md](./PACKAGING.md)** for details, distribution notes, and where the
-data lives per‑user.
+**Windows installer without a Windows machine:** push a version tag and GitHub Actions
+builds it for you and publishes it to the Releases page:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+(You can also trigger it manually from the repo's **Actions** tab → *Build Windows
+installer* → *Run workflow*.) See **[PACKAGING.md](./PACKAGING.md)** for details,
+distribution notes, and where the data lives per‑user.
 
 ---
 
