@@ -31,8 +31,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Build the Next.js app, then package the Windows installer.
+      # --publish never stops electron-builder from trying to upload to GitHub
+      # itself (the "Publish to GitHub Release" step below handles that).
       - name: Build Windows installer
-        run: npm run dist:win
+        run: |
+          npm run build
+          npx electron-builder --win --publish never
 
       # Always upload the installer as a build artifact (available on every run,
       # including manual ones). Requires a GitHub login to download.
