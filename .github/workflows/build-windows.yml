@@ -56,7 +56,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
+          # Remove any existing release for this tag so re-runs are idempotent
+          # (keeps the git tag; only clears the release + its assets).
+          gh release delete "${GITHUB_REF_NAME}" --yes 2>/dev/null || true
           gh release create "${GITHUB_REF_NAME}" dist-app/*.exe \
             --title "PayTrack ${GITHUB_REF_NAME}" \
-            --notes "Windows installer for PayTrack ${GITHUB_REF_NAME}. Download the \`.exe\` below, run it, and click **More info → Run anyway** if Windows SmartScreen warns about an unknown publisher." \
-            --clobber
+            --notes "Windows installer for PayTrack ${GITHUB_REF_NAME}. Download the \`.exe\` below, run it, and click **More info → Run anyway** if Windows SmartScreen warns about an unknown publisher."
